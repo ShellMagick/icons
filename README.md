@@ -74,7 +74,8 @@ Each folder defines the dimensions of the exported PNG files.
 | `powershell-light.png`       | `inkscape -w 32 -h 32                           ./src/powershell-light.svg       -o ./32x32/powershell-light.png      ` |
 | `shellmagick-dark.png`       | `inkscape -w 32 -h 32                           ./src/shellmagick-dark.svg       -o ./32x32/shellmagick-dark.png      ` |
 | `shellmagick-light.png`      | `inkscape -w 32 -h 32                           ./src/shellmagick-light.svg      -o ./32x32/shellmagick-light.png     ` |
-| `tux.png`                    | `inkscape -w 32 -h 32                           ./src/tux.svg                    -o ./32x32/tux.png                   ` |
+| `tux-dark.png`               | `inkscape -w 32 -h 32                           ./src/tux.svg                    -o ./32x32/tux.png                   ` |
+| `tux-light.png`              | `inkscape -w 32 -h 32                           ./src/tux.svg                    -o ./32x32/tux.png                   ` |
 | `windows-terminal-dark.png`  | `inkscape -w 32 -h 32                           ./src/windows-terminal-dark.svg  -o ./32x32/windows-terminal-dark.png ` |
 | `windows-terminal-light.png` | `inkscape -w 32 -h 32                           ./src/windows-terminal-light.svg -o ./32x32/windows-terminal-light.png` |
 
@@ -88,5 +89,8 @@ for %d in (8, 16, 32, 64, 128, 256) do (
     for /R %f in (.\src\mingw*.svg) do (
         inkscape -w %d -h %d --export-area=0:0:117:117 %f -o .\%dx%d\%~nf.png
     )
+    del .\%dx%d\tux.png
+    inkscape -w %d -h %d .\src\tux.svg -o .\%dx%d\tux-dark.png
+    inkscape -w %d -h %d .\src\tux.svg -o .\%dx%d\tux-light.png
 )
 ```
